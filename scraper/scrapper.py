@@ -1,9 +1,11 @@
 import requests
 import time
 from pymongo import MongoClient
+import os
 
 page_number = 1
-client = MongoClient('mongodb://localhost:27018/')
+MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27018/")
+client = MongoClient(MONGO_URI)
 db = client['openfoodfacts_db']
 collection = db['products_collection']
 
