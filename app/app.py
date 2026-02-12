@@ -110,3 +110,14 @@ nutriscore_counts = (
 )
 st.bar_chart(nutriscore_counts)
 
+####
+st.markdown("### 🧪 Répartition des groupes NOVA")
+
+nova_counts = (
+    filtered_df["nova_group"]
+    .value_counts()
+    .sort_index()
+)
+
+st.bar_chart(nova_counts)
+
