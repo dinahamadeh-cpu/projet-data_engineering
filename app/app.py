@@ -136,3 +136,17 @@ ecoscore_counts = (
 
 st.bar_chart(ecoscore_counts)
 
+####
+st.subheader("Analyses croisées")
+
+st.markdown("### 🔗 Lien entre Nutriscore et niveau de transformation (NOVA)")
+
+nutri_nova = (
+    filtered_df
+    .groupby("nutriscore_grade")["nova_group"]
+    .mean()
+    .sort_index()
+)
+
+st.bar_chart(nutri_nova)
+
