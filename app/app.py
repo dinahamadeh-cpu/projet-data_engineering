@@ -121,3 +121,18 @@ nova_counts = (
 
 st.bar_chart(nova_counts)
 
+####
+st.caption(
+    "NOVA 1 : non transformés | NOVA 4 : ultra-transformés"
+)
+
+st.markdown("### 🌱 Répartition des Ecoscores")
+
+ecoscore_counts = (
+    filtered_df["ecoscore_grade"]
+    .value_counts()
+    .sort_index()
+)
+
+st.bar_chart(ecoscore_counts)
+
