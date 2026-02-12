@@ -150,3 +150,21 @@ nutri_nova = (
 
 st.bar_chart(nutri_nova)
 
+####
+st.subheader("Analyse par catégories")
+
+categories_df = (
+    filtered_df
+    .explode("categories_en")
+    .dropna(subset=["categories_en"])
+)
+
+top_categories = (
+    categories_df["categories_en"]
+    .value_counts()
+    .head(10)
+)
+
+st.markdown("### 🏷️ Top 10 des catégories les plus représentées")
+st.bar_chart(top_categories)
+
