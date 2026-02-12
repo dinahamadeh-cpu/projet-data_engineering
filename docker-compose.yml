@@ -7,13 +7,13 @@ services:
     volumes:
       - mongo_data:/data/db
 
-#   scraper:
-#     build: ./scraper
-#     depends_on:
-#       - mongodb
-#     environment:
-#       - MONGO_URI=mongodb://mongo:27017
-#     restart: "no"
+  scraper:
+    build: ./scraper
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_URI=mongodb://mongo:27017
+    restart: "no"
 
 #   app:
 #     build: ./app
