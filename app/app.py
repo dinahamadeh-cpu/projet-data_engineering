@@ -6,7 +6,7 @@ import os
 st.set_page_config(page_title="OpenFoodFacts Data", layout="wide")
 
 st.title("OpenFoodFacts - Data Visualization Dashboard")
-st.write("This dashboard allows you to explore the data collected from the OpenFoodFacts API.")
+st.write("Ce dashoard vous permet de visualiser et d'explorer les données des produits alimentaires issues de la base de données OpenFoodFacts, stockées dans MongoDB.")
 
 @st.cache_resource
 def get_data_from_mongodb():
@@ -99,6 +99,7 @@ st.dataframe(
     ],
     use_container_width=True
 )
+
 st.subheader("Analyses globales")
 
 st.markdown("### 🥗 Répartition des Nutriscores")
@@ -108,8 +109,9 @@ nutriscore_counts = (
     .value_counts()
     .sort_index()
 )
-st.bar_chart(nutriscore_counts)
 
+st.bar_chart(nutriscore_counts)
+####
 ####
 st.markdown("### 🧪 Répartition des groupes NOVA")
 
@@ -120,7 +122,7 @@ nova_counts = (
 )
 
 st.bar_chart(nova_counts)
-
+####
 ####
 st.caption(
     "NOVA 1 : non transformés | NOVA 4 : ultra-transformés"
@@ -135,7 +137,7 @@ ecoscore_counts = (
 )
 
 st.bar_chart(ecoscore_counts)
-
+####
 ####
 st.subheader("Analyses croisées")
 
@@ -149,7 +151,7 @@ nutri_nova = (
 )
 
 st.bar_chart(nutri_nova)
-
+####
 ####
 st.subheader("Analyse par catégories")
 
@@ -167,4 +169,3 @@ top_categories = (
 
 st.markdown("### 🏷️ Top 10 des catégories les plus représentées")
 st.bar_chart(top_categories)
-
