@@ -1,7 +1,7 @@
 import streamlit as st
 from pymongo import MongoClient
 import pandas as pd
-#import os
+import os
 
 st.set_page_config(page_title="OpenFoodFacts Data", layout="wide")
 
@@ -10,9 +10,8 @@ st.write("This dashboard allows you to explore the data collected from the OpenF
 
 @st.cache_resource
 def get_data_from_mongodb():
-    #MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27018/")
-    #client = MongoClient(MONGO_URI)
-    client = MongoClient('mongodb://localhost:27018/')
+    MONGO_URI = os.getenv("MONGO_URI", "mongodb://mongo:27017/")
+    client = MongoClient(MONGO_URI)
     db = client["openfoodfacts_db"]
     collection = db["products_collection"]
     return collection
@@ -100,3 +99,14 @@ st.dataframe(
     ],
     use_container_width=True
 )
+st.subheader("Analyses globales")
+
+st.markdown("### 🥗 Répartition des Nutriscores")
+st.caption("Nutriscore A : meilleur score nutritionnel | Nutriscore E : moins bon score nutritionnel")
+nutriscore_counts = (
+    filtered_df["nutriscore_grade"]
+    .value_counts()
+    .sort_index()
+)
+st.bar_chart(nutriscore_counts)
+
