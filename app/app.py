@@ -1,6 +1,7 @@
 import streamlit as st
 from pymongo import MongoClient
 import pandas as pd
+#import os
 
 st.set_page_config(page_title="OpenFoodFacts Data", layout="wide")
 
@@ -9,7 +10,9 @@ st.write("This dashboard allows you to explore the data collected from the OpenF
 
 @st.cache_resource
 def get_data_from_mongodb():
-    client = MongoClient("mongodb://localhost:27018/")
+    #MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27018/")
+    #client = MongoClient(MONGO_URI)
+    client = MongoClient('mongodb://localhost:27018/')
     db = client["openfoodfacts_db"]
     collection = db["products_collection"]
     return collection
