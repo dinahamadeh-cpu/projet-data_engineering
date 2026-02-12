@@ -15,14 +15,14 @@ services:
       - MONGO_URI=mongodb://mongo:27017
     restart: "no"
 
-#   app:
-#     build: ./app
-#     ports:
-#       - "8501:8501"
-#     depends_on:
-#       - mongodb
-#     environment:
-#       - MONGO_URI=mongodb://mongo:27017
+  app:
+    build: ./app
+    ports:
+      - "8501:8501"
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_URI=mongodb://mongo:27017
 
-# volumes:
-#   mongo_data:
+volumes:
+  mongo_data:
