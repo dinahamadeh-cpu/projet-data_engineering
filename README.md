@@ -88,6 +88,3 @@ Nous avons choisi d'utiliser MongoDB pour sa flexibilité de schéma, son utilis
     Identification du Nutriscore dominant au sein de la sélection.
 
     Recensement des produits considérés comme ultra-transformés.
-## Docker
-Lors de cette partie, nous allons essentiellement parler des problèmes que nous avons eu et comment nous avons pu les résoudre.
-
