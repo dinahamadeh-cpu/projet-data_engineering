@@ -1,17 +1,16 @@
 import requests
 import time
 from pymongo import MongoClient
-#import os
+import os
+import sys
 
 page_number = 1
-#MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27018/")
-#client = MongoClient(MONGO_URI)
-#client = MongoClient('mongodb://localhost:27017/')
-client = MongoClient('mongodb://mongo:27017/')
+MONGO_URI = os.getenv("MONGO_URI", "mongodb://mongo:27017/")
+client = MongoClient(MONGO_URI)
 db = client['openfoodfacts_db']
 collection = db['products_collection']
 
-for page_number in range(1, 201):
+for page_number in range(1, 151):
     url = "https://world.openfoodfacts.org/api/v2/search?&fields=product_name_en,categories_tags_en,nutriscore_grade,nova_group,ecoscore_grade&page_size=40&page={page_number}"
     
     response = requests.get(url.format(page_number=page_number))
@@ -86,3 +85,4 @@ for page_number in range(1, 201):
 
     print(f"Page {page_number} : {valid_products_count} produits valides")    
     time.sleep(2)  
+sys.exit(0)

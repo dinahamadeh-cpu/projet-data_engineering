@@ -3,8 +3,8 @@ Voici le projet de data engineering que nous avons fait au premier semestre en 4
 
 ## Description du Projet
 Ce projet consiste en la création d'un site web interactif affichant la liste d'alimennt (anglais), ressencer sur Open Food Fact, et montrer des informations liées à ces mêmes aliments. Les données ont été scrappé depuis l'API publique du site et ont été rajouter sur une base de donnée MongoDB pour, enfin, être mises sur l'application développer en Python.
-Le tableau de bord pert de : 
-* on verra plus tard 
+Le tableau de bord permet de visualiser les données 
+
 
 ## Prérequis Techniques 
 * Docker
@@ -18,19 +18,12 @@ Pour pouvoir lancer le projet veuillez suivre les étapes suivantes :
 ```
 git clone https://github.com/dinahamadeh-cpu/projet-data_engineering.git
 cd projet-data_engineering
-docker-compose up -d mongodb
-docker-compose run --rm scraper
-docker-compose run --rm app
+docker-compose up --build
 ```
 Les dockers seront lancés de la manière suivante : 
 * mongodb fonctionne en premier
 * le scraper se lance, rempli la base de donnée 
-* une fois fini, l'application se lance pour avoir l'entièreté des données
-
-* Si vous souhaitez lancer le scrapping du site Open food Fact, lancer le document scrapper.py depuis le terminal. Ici, le scrapping se fait une fois le code lancé. 
-* Nettoyage
-* Lancer MongoDB avec Docker : 
-
+* une fois l'application se lance pour avoir l'entièreté des données
 
 # Documentation Technique 
 Dans cette partie, nous vous expliquerons les choix que nous avons fait tout au long du projet, ainsi que certains détails dans les codes qui semblent important à savoir. 
